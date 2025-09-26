@@ -1,0 +1,20 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity UC is
+
+Port( entrada: in std_logic_vector ( 7 downto 0);
+      saida: out std_logic_vector(7 downto 0)
+);
+
+END UC;
+
+ARCHITECTURE ola of UC is
+begin
+
+  with entrada select
+  saida <= "00000000" when "00000000",
+  	       "00000001" when "00000001",
+  		   "11111111" when others;
+
+end ola;
