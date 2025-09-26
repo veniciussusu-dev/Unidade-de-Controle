@@ -1,0 +1,45 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+ENTITY test IS
+END test;
+
+ARCHITECTURE oi OF test IS
+    -- Component Declaration for the Unit Under Test (DUT)
+    COMPONENT UC IS
+      Port( entrada: in std_logic_vector ( 7 downto 0);
+           saida: out std_logic_vector(7 downto 0)
+);
+    END COMPONENT;
+
+    -- Inputs and outputs for the testbench
+    signal entrada_in, saida_out : std_logic_vector(7 downto 0);
+
+
+BEGIN
+    -- Instantiate the DUT
+    DUT: UC PORT MAP(
+entrada_in, saida_out
+    );
+
+    -- Stimulus process
+    stim_proc: process
+    begin
+      
+    --test case 1
+      entrada_in <= "00000000";
+      wait for 1 ns;
+      
+    --test case 2
+      entrada_in <= "00000001";
+      wait for 1 ns;
+      
+    --test case 3
+      entrada_in <= "00100000";
+      wait for 1 ns;
+      wait;
+      
+end process;
+end oi;
+      
+      
